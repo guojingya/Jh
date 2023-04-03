@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jh.demo.mapper.usermapper">
+    <select id="selectOne" resultType="com.jh.demo.pojo.User">
+        select * from User where username = #{username} and password=#{password}
+    </select>
+
+    <select id="getProduct" resultType="com.jh.demo.pojo.Product">
+        select oid, product.pid pid ,pname,price,nums from product
+         left join orders_product on product.pid=orders_product.pid where oid =#{oid}
+    </select>
+
+    <select id="getProductByPid" resultType="com.jh.demo.pojo.Product">
+        select * from product where pid=#{pid}
+    </select>
+
+
+    <select id="getProductAll" resultType="com.jh.demo.pojo.ProductPojo">
+        select * from product
+    </select>
+</mapper>
